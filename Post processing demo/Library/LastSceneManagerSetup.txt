@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/SC Post Effects/_Demo/SCPE_DemoRooms.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0

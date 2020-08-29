@@ -1,6 +1,3 @@
-# MusicMatrixHackathon
-Code for the Music Matrix project.
-
 ## Pose
 
 Pose takes a 2D vector illustration and animates its containing curves in real-time based on the recognition result from PoseNet. It borrows the idea of skeleton-based animation from computer graphics and applies it to vector characters.

@@ -21,6 +21,7 @@ import * as paper from 'paper';
 import dat from 'dat.gui';
 import Stats from 'stats.js';
 import "babel-polyfill";
+import io from 'socket.io-client';
 
 import {drawKeypoints, drawSkeleton, isMobile, toggleLoadingUI, setStatusText} from './utils/demoUtils';
 import {SVGUtils} from './utils/svgUtils'
@@ -55,6 +56,30 @@ const avatarSvgs = {
   'women': womenSVG.default,
   'men': menSVG.default,
 };
+
+var socket = io('http://127.0.0.1:8081');
+   socket.on('connect', function() {
+        // sends to socket.io server the host/port of oscServer
+        // and oscClient
+        socket.emit('config',
+            {
+                server: {
+                    port: 3333,
+                    host: '127.0.0.1'
+                },
+                client: {
+                    port: 3334,
+                    host: '127.0.0.1'
+                }
+            }
+        );
+    });
+
+    socket.on('message', function(obj) {
+        var status = document.getElementById("status");
+        status.innerHTML = obj[0];
+        console.log(obj);
+    });
 
 /**
  * Loads a the camera to be used in the demo

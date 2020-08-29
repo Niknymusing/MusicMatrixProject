@@ -202,7 +202,7 @@ function detectPoseInRealTime(video) {
     });
 
     poses = poses.concat(all_poses);
-    socket.send(poses.join(' '));
+    socket.send(Object.values(poses[0].keypoints[0].position));
     input.dispose();
 
     keypointCtx.clearRect(0, 0, videoWidth, videoHeight);

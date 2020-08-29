@@ -17,9 +17,8 @@ io.on('connection', function (socket) {
     });
   });
   socket.on('message', function (obj) {
-    var toSend = obj.split(' ');
-    oscClient.send(...toSend);
-    console.log('sent WS message to OSC', toSend);
+    oscClient.send('/CH0',...obj);
+    console.log('sent position of nose to Unity', obj);
   });
   socket.on("disconnect", function () {
     oscServer.kill();

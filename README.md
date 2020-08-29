@@ -3,11 +3,11 @@ Code for the Music Matrix project.
 
 ## Open Sound Control Web Bridge
 
-Creates a simple bridge between your Web page and an OSC app or device.
+Creates a simple bridge between Pose and Unity.
 
-    .----------.              .----------------------.    .------------------.                 .----------.
-    | OSC  app | --tcp/udp--> | bridge.js OSC server | => | socket.io client | --websockets--> | web page |
-    `--(3334)--'              `-------( 3333 )-------'    `------------------'                 `----------'
+    .----------.              .----------------------.    .------------------.                 .------.
+    |   Unity  | --tcp/udp--> | bridge.js OSC server | => | socket.io client | --websockets--> | Pose |
+    `--(3334)--'              `-------( 3333 )-------'    `------------------'                 .------.
          ^                                                                                          |
          |                                                                                          |
          |                                                                                          |

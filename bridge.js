@@ -17,8 +17,8 @@ io.on('connection', function (socket) {
     });
   });
   socket.on('message', function (obj) {
-    oscClient.send('/CH0',...obj);
-    console.log('sent position of nose to Unity', obj);
+    oscClient.send('/pose',...obj);
+    console.log('sent pose to Unity', obj);
   });
   socket.on("disconnect", function () {
     oscServer.kill();

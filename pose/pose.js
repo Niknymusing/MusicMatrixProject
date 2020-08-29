@@ -81,6 +81,16 @@ var socket = io('http://127.0.0.1:8081');
         console.log(obj);
     });
 
+function sendPose(poses) {
+  let msgPose = [];
+  let msgKeypoint = [];
+  for (let keypoint = 0; keypoint < 17; keypoint++) {
+    msgKeypoint = [poses[0].keypoints[keypoint].part, Object.values(poses[0].keypoints[keypoint].position), poses[0].keypoints[keypoint].score];
+    msgPose = msgPose.concat(msgKeypoint) ;
+  }
+  socket.send(msgPose);
+}
+
 /**
  * Loads a the camera to be used in the demo
  *
@@ -202,7 +212,7 @@ function detectPoseInRealTime(video) {
     });
 
     poses = poses.concat(all_poses);
-    socket.send(Object.values(poses[0].keypoints[0].position));
+    sendPose(poses);
     input.dispose();
 
     keypointCtx.clearRect(0, 0, videoWidth, videoHeight);

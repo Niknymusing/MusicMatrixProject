@@ -28,15 +28,15 @@ AnimationClip:
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.11864405
       - serializedVersion: 3
-        time: 0.33333334
+        time: 1
         value: 1
-        inSlope: 3
-        outSlope: 0
-        tangentMode: 5
+        inSlope: 1.4108635
+        outSlope: 1.4108635
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.12354982
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -44,7 +44,7 @@ AnimationClip:
     attribute: t
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 1d53bfa533fc6754da5d6955528c27eb, type: 3}
+    script: {fileID: 11500000, guid: c3332e726b379764c89deb9d8fec3e5b, type: 3}
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -86,15 +86,15 @@ AnimationClip:
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.33333334
+        outWeight: 0.11864405
       - serializedVersion: 3
-        time: 0.33333334
+        time: 1
         value: 1
-        inSlope: 3
-        outSlope: 0
-        tangentMode: 5
+        inSlope: 1.4108635
+        outSlope: 1.4108635
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.12354982
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -102,7 +102,7 @@ AnimationClip:
     attribute: t
     path: 
     classID: 114
-    script: {fileID: 11500000, guid: 1d53bfa533fc6754da5d6955528c27eb, type: 3}
+    script: {fileID: 11500000, guid: c3332e726b379764c89deb9d8fec3e5b, type: 3}
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0

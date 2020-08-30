@@ -10,19 +10,28 @@ public class skybox_color : MonoBehaviour
     public Color finalColor;
     public Material skybox_mat;
     public Material expansion_mat;
+    public GameObject discExpander;
+    public float t = 0f;
+    private float hue2, sat2, val2 = 0f;
     private Color tmpColor;
     private float hueShift;
-    // Start is called before the first frame update
+    
     void Start()
     {
         anim = GetComponent<Animation>();
-        StartCoroutine(ColorUpdate());
     }
 
+    void Update(){
+        if (Input.GetKeyDown("space")){
+            StartCoroutine(ColorUpdate());
+            discExpander.SetActive(true);
+        }
+    }
     public IEnumerator ColorUpdate() 
     {
         currentColor = skybox_mat.GetColor("_Tint");
         finalColor = expansion_mat.GetColor("_Color");
+        anim[animClipName].speed = 0.35f;
         anim.Play(animClipName);
 		yield return WaitForAnim(animClipName);
     }
@@ -36,12 +45,14 @@ public class skybox_color : MonoBehaviour
 
             // convert from RGB to HSV
             Color.RGBToHSV(currentColor, out float hue, out float sat, out float val);
-            Color.RGBToHSV(finalColor, out float hue2, out float sat2, out float val2);
+            Color.RGBToHSV(finalColor, out hue2, out sat2, out val2);
 
-            hueShift = Mathf.Lerp(hueShift, hue, hue2);
-            skybox_mat.SetColor("_Tint", Color.HSVToRGB(hueShift, sat2, val2));
+            hueShift = Mathf.Lerp(hue, hue2, t);
+            skybox_mat.SetColor("_Tint", Color.HSVToRGB(hueShift, sat2, 0.4f));
             yield return null;
-
         }
+        discExpander.SetActive(false);
+        expansion_mat.SetColor("_Color", Color.HSVToRGB(Random.Range(0f, 1f), sat2, val2));
+        yield return null;
     }
 }

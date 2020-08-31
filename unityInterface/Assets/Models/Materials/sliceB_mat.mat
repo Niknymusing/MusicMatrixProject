@@ -75,5 +75,5 @@ Material:
     - _emission: 0.25
     m_Colors:
     - _Color: {r: 0.25711673, g: 0.25300002, b: 0.5, a: 1}
-    - _EmissionColor: {r: 0.05448028, g: 0.052860655, b: 0.21586053, a: 1}
+    - _EmissionColor: {r: 2.9487612e-18, g: 2.8610974e-18, b: 1.1683647e-17, a: 1}
     - _color: {r: 0.216783, g: 0, b: 1, a: 1}

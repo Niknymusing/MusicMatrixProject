@@ -222,7 +222,7 @@ public class SimpleSpectrum : MonoBehaviour {
     }
 
 
-    float[] spectrum; 
+    public static float[] spectrum; 
 
     //float lograithmicAmplitudePower = 2, multiplyByFrequencyPower = 1.5f;
 	Transform[] bars;

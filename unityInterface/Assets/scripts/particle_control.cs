@@ -12,13 +12,12 @@ public class particle_control : MonoBehaviour {
 	public float startSizeMag = 10f;
 	public float speedMultiplier = 50f;
 
-	private float H, S, V, start_V, final_V;
+	private float H, S, V, start_H, final_H;
 	private Color startColor;
 	private Color tmpColor;
 
 
 	public ParticleSystem ps;
-	public ParticleSystem rs;
 	private ParticleSystem.ShapeModule pShape;
 	private ParticleSystem.MainModule pMain;
 	private ParticleSystem.VelocityOverLifetimeModule vMain;
@@ -32,35 +31,39 @@ public class particle_control : MonoBehaviour {
 		pMain = ps.main;
 		vMain = ps.velocityOverLifetime;
 
-		rMain = rs.main;	
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		pShape.radius = Mathf.Abs(OSC_channels.OSCch_data[channel,audio_component]) * radiusMag;
+		//pShape.radius = SimpleSpectrum.spectrum[0] * radiusMag;
 		pShape.angle = Mathf.Abs(OSC_channels.OSCch_data[channel,audio_component]) * 10f;
-		float tmpSize = OSC_channels.OSCch_data[channel,2] * startSizeMag;
+		
+
+		//move object up and down
+		transform.position = new Vector3(0f, SimpleSpectrum.spectrum[1] * startSizeMag, 0f);
 
 		//color set and conversion to HSV
-		startColor = asset_mat.GetColor("_EmissionColor");
+		startColor = asset_mat.GetColor("_Color");
 		Color.RGBToHSV(startColor, out H, out S, out V);
 
-		//emission adjustments
-		start_V = Mathf.Abs(OSC_channels.OSCch_data[channel,2]) * 3f;
+		//color adjustments in hue
+		start_H = Mathf.Clamp01(SimpleSpectrum.spectrum[0] * 10000f);
 
 		//particle emission and size adjustments
-		float tmp_emission = Mathf.Abs(OSC_channels.OSCch_data[channel,2]) * emissionMag;
+		float tmp_emission = SimpleSpectrum.spectrum[0] * 10000f * emissionMag;
 		ps.emissionRate = tmp_emission;
-		pMain.startSize = new ParticleSystem.MinMaxCurve(tmpSize + 2f, tmpSize + 5f);
+		float tmpSize = SimpleSpectrum.spectrum[0] * 1000f * startSizeMag;
+		//pMain.startSize = new ParticleSystem.MinMaxCurve(tmpSize + 2f, tmpSize + 5f);
 
-		float tmp_speed = OSC_channels.OSCch_data[channel,2] * speedMultiplier;
-		pMain.startSpeed = new ParticleSystem.MinMaxCurve(tmp_speed+12f, tmp_speed+15f);
+		//float tmp_speed = OSC_channels.OSCch_data[channel,2] * speedMultiplier;
+		//pMain.startSpeed = new ParticleSystem.MinMaxCurve(tmp_speed+12f, tmp_speed+15f);
 		
 	}
 	void LateUpdate(){
-		final_V = Mathf.LerpUnclamped(V, Mathf.Abs(OSC_channels.OSCch_data[channel,1]) * 5f, 0.3f * Time.deltaTime);
+		//lerp across hue variations for smoother interpolations
+		final_H = Mathf.LerpUnclamped(H, start_H, 2f * Time.deltaTime);
 
-		asset_mat.SetColor("_EmissionColor", Color.HSVToRGB(H,S,final_V, true));
+		//set final color
+		asset_mat.SetColor("_Color", Color.HSVToRGB(final_H,S,V, true));
 	}
 }

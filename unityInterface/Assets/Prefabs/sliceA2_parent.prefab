@@ -123,7 +123,7 @@ Animation:
   m_PrefabInstance: {fileID: 5185180149904684216}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5185180150832738522}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 4315573c00dce7e43a6e04ab7d1de31e, type: 2}
   m_Animations:
@@ -154,6 +154,11 @@ PrefabInstance:
       propertyPath: m_Animations.Array.data[0]
       value: 
       objectReference: {fileID: 7400000, guid: 4315573c00dce7e43a6e04ab7d1de31e, type: 2}
+    - target: {fileID: -5716681864270162303, guid: bd4db1f82356e6a4aae1973f93a361f3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bd4db1f82356e6a4aae1973f93a361f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0

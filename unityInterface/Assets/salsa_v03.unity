@@ -9909,7 +9909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628293353}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 18.78, y: 2.483377, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -15244,18 +15244,19 @@ MonoBehaviour:
   multiplyByFrequency: 1
   frequencyLimitLow: 0
   frequencyLimitHigh: 22050
-  barAmount: 1
-  barYScale: 1
+  barAmount: 64
+  barYScale: 5
   barMinYScale: 0.1
-  barPrefab: {fileID: 1160958800528776, guid: f11cbd60782f38f44a51aabdd261b2a0, type: 3}
-  barXScale: 0
-  barXSpacing: 0
-  barCurveAngle: 0
+  barPrefab: {fileID: 5185180149298204757, guid: cef9ff9787841714597a4e1bf2c8b871,
+    type: 3}
+  barXScale: 1
+  barXSpacing: 0.5
+  barCurveAngle: 360
   barXRotation: 0
   attackDamp: 0.3
   decayDamp: 0.15
   useColorGradient: 0
-  colorMin: {r: 0, g: 0, b: 0, a: 1}
+  colorMin: {r: 0.8679245, g: 0.12691349, b: 0.12691349, a: 1}
   colorMax: {r: 1, g: 1, b: 1, a: 1}
   colorValueCurve:
     serializedVersion: 2

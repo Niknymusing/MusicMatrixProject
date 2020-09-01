@@ -5143,14 +5143,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0f32ee59a71284db850780d57f764f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  channel: 0
-  audio_component: 3
+  spectrumAsset: {fileID: 1300532483}
+  ps: {fileID: 602399239}
   asset_mat: {fileID: 2100000, guid: d288254892b9fb243ab67db1fe0c0857, type: 2}
   radiusMag: 500
   emissionMag: 10
   startSizeMag: 0.05
-  speedMultiplier: 50
-  ps: {fileID: 602399239}
+  lifetimeMag: 20
+  rotationMag: 10
+  hueVariationMag: 2
 --- !u!1 &628293353
 GameObject:
   m_ObjectHideFlags: 0

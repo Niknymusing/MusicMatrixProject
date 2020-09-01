@@ -78,34 +78,52 @@ public class OSCRec_pose : MonoBehaviour {
 
     void Update()
     { 
-        Vector3 nose_pos = nose.transform.position;
-        nose_pos.x = nose_X;  
-        nose_pos.z = nose_Z;   
-        nose.transform.position = nose_pos;
+        if (nose != null)
+        { 
+            Vector3 nose_pos = nose.transform.position;
+            nose_pos.x = nose_X;  
+            nose_pos.z = nose_Z;   
+            nose.transform.position = nose_pos;
+        }
 
-        Vector3 leftWrist_pos = leftWrist.transform.position;
-        leftWrist_pos.x = leftWrist_X;  
-        leftWrist_pos.z = leftWrist_Z;   
-        leftWrist.transform.position = leftWrist_pos;
+        if (leftWrist != null)
+        {  
+            Vector3 leftWrist_pos = leftWrist.transform.position;
+            leftWrist_pos.x = leftWrist_X;  
+            leftWrist_pos.z = leftWrist_Z;   
+            leftWrist.transform.position = leftWrist_pos;
+        }
 
-        Vector3 rightWrist_pos = rightWrist.transform.position;
-        rightWrist_pos.x = rightWrist_X;  
-        rightWrist_pos.z = rightWrist_Z;   
-        rightWrist.transform.position = rightWrist_pos;
+        if (rightWrist != null)
+        {
+            Vector3 rightWrist_pos = rightWrist.transform.position;
+            rightWrist_pos.x = rightWrist_X;  
+            rightWrist_pos.z = rightWrist_Z;   
+            rightWrist.transform.position = rightWrist_pos;
+        }
+        
+        if (leftAnkle != null)
+        {         
+            Vector3 leftAnkle_pos = leftAnkle.transform.position;
+            leftAnkle_pos.x = leftAnkle_X;  
+            leftAnkle_pos.z = leftAnkle_Z;   
+            leftAnkle.transform.position = leftAnkle_pos;
+        }
 
-        Vector3 leftAnkle_pos = leftAnkle.transform.position;
-        leftAnkle_pos.x = leftAnkle_X;  
-        leftAnkle_pos.z = leftAnkle_Z;   
-        leftAnkle.transform.position = leftAnkle_pos;
-
-        Vector3 rightAnkle_pos = rightAnkle.transform.position;
-        rightAnkle_pos.x = rightAnkle_X;  
-        rightAnkle_pos.z = rightAnkle_Z;   
-        rightAnkle.transform.position = rightAnkle_pos;
-
-        Vector3 body_pos = body.transform.position;
-        body_pos.x = body_X;  
-        body_pos.z = body_Z;   
-        body.transform.position = body_pos;
+        if  (rightAnkle != null)
+        {
+            Vector3 rightAnkle_pos = rightAnkle.transform.position;
+            rightAnkle_pos.x = rightAnkle_X;  
+            rightAnkle_pos.z = rightAnkle_Z;   
+            rightAnkle.transform.position = rightAnkle_pos;
+        }
+            
+        if  (body != null)
+        {
+            Vector3 body_pos = body.transform.position;
+            body_pos.x = body_X;  
+            body_pos.z = body_Z;   
+            body.transform.position = body_pos;
+        }       
     }
 }

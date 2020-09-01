@@ -31,7 +31,7 @@ public class skybox_color : MonoBehaviour
     {
         currentColor = skybox_mat.GetColor("_Tint");
         finalColor = expansion_mat.GetColor("_Color");
-        anim[animClipName].speed = 0.35f;
+        anim[animClipName].speed = 0.5f;
         anim.Play(animClipName);
 		yield return WaitForAnim(animClipName);
     }
@@ -48,7 +48,7 @@ public class skybox_color : MonoBehaviour
             Color.RGBToHSV(finalColor, out hue2, out sat2, out val2);
 
             hueShift = Mathf.Lerp(hue, hue2, t);
-            skybox_mat.SetColor("_Tint", Color.HSVToRGB(hueShift, sat2, 0.4f));
+            skybox_mat.SetColor("_Tint", Color.HSVToRGB(hueShift, sat2, 1f));
             yield return null;
         }
         discExpander.SetActive(false);

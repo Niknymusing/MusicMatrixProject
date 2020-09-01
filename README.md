@@ -1,7 +1,7 @@
 # MusicMatrixHackathon
 Code for the Music Matrix project.
 
-## Open Sound Control Web Bridge
+## Open Sound Control (OSC) Web Bridge
 
 Creates a simple bridge between Pose and Unity.
 
@@ -17,11 +17,15 @@ Creates a simple bridge between Pose and Unity.
 
 ## Pose
 
-Pose takes a 2D vector illustration and animates its containing curves in real-time based on the recognition result from PoseNet. It borrows the idea of skeleton-based animation from computer graphics and applies it to vector characters.
+Body movements are detected via web camera using PoseNet and sent via OSC to Unity for visualization.
 
-## Using OSC together with pose
+## Unity
 
-Run the bridge app on your machine (localhost):
+Unity is used to render body movements and music.
+
+## Usage
+
+Install dependencies and run the bridge app on your machine (localhost):
 
 ```
 $ cd MusicMatrixHackathon
@@ -35,3 +39,5 @@ $ cd pose
 $ yarn
 $ yarn watch
 ```
+
+Run Unity

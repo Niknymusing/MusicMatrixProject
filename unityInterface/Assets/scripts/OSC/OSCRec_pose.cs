@@ -14,27 +14,27 @@ public class OSCRec_pose : MonoBehaviour {
 
     private GameObject nose;
     private float nose_X;
-    private float nose_Y;
+    private float nose_Z;
 
     private GameObject leftWrist;
     private float leftWrist_X;
-    private float leftWrist_Y;
+    private float leftWrist_Z;
 
     private GameObject rightWrist;
     private float rightWrist_X;
-    private float rightWrist_Y;
+    private float rightWrist_Z;
 
     private GameObject leftAnkle;
     private float leftAnkle_X;
-    private float leftAnkle_Y;
+    private float leftAnkle_Z;
 
     private GameObject rightAnkle;
     private float rightAnkle_X;
-    private float rightAnkle_Y;
+    private float rightAnkle_Z;
 
     private GameObject body;
     private float body_X;
-    private float body_Y;
+    private float body_Z;
     
     private float xOffset = 150;
     private float yOffset = 150;
@@ -58,54 +58,54 @@ public class OSCRec_pose : MonoBehaviour {
 	public void ListenEvent(OscMessage oscMessage)
     {
         nose_X = (float)oscMessage.Values[1]-xOffset;
-        nose_Y = (float)oscMessage.Values[2]-yOffset;
+        nose_Z = (float)oscMessage.Values[2]-yOffset;
 
         leftWrist_X = (float)oscMessage.Values[37]-xOffset;
-        leftWrist_Y = (float)oscMessage.Values[38]-yOffset;
+        leftWrist_Z = (float)oscMessage.Values[38]-yOffset;
 
         rightWrist_X = (float)oscMessage.Values[41]-xOffset;
-        rightWrist_Y = (float)oscMessage.Values[42]-yOffset;
+        rightWrist_Z = (float)oscMessage.Values[42]-yOffset;
 
         leftAnkle_X = (float)oscMessage.Values[61]-xOffset;
-        leftAnkle_Y = (float)oscMessage.Values[62]-yOffset;
+        leftAnkle_Z = (float)oscMessage.Values[62]-yOffset;
 
         rightAnkle_X = (float)oscMessage.Values[65]-xOffset;
-        rightAnkle_Y = (float)oscMessage.Values[66]-yOffset;
+        rightAnkle_Z = (float)oscMessage.Values[66]-yOffset;
 
         body_X = ((float)oscMessage.Values[21]+(float)oscMessage.Values[25])/2-xOffset;
-        body_Y = ((float)oscMessage.Values[21]+(float)oscMessage.Values[45])/2-yOffset;
+        body_Z = ((float)oscMessage.Values[21]+(float)oscMessage.Values[45])/2-yOffset;
     }
 
     void Update()
     { 
         Vector3 nose_pos = nose.transform.position;
         nose_pos.x = nose_X;  
-        nose_pos.y = nose_Y;   
+        nose_pos.z = nose_Z;   
         nose.transform.position = nose_pos;
 
         Vector3 leftWrist_pos = leftWrist.transform.position;
         leftWrist_pos.x = leftWrist_X;  
-        leftWrist_pos.y = leftWrist_Y;   
+        leftWrist_pos.z = leftWrist_Z;   
         leftWrist.transform.position = leftWrist_pos;
 
         Vector3 rightWrist_pos = rightWrist.transform.position;
         rightWrist_pos.x = rightWrist_X;  
-        rightWrist_pos.y = rightWrist_Y;   
+        rightWrist_pos.z = rightWrist_Z;   
         rightWrist.transform.position = rightWrist_pos;
 
         Vector3 leftAnkle_pos = leftAnkle.transform.position;
         leftAnkle_pos.x = leftAnkle_X;  
-        leftAnkle_pos.y = leftAnkle_Y;   
+        leftAnkle_pos.z = leftAnkle_Z;   
         leftAnkle.transform.position = leftAnkle_pos;
 
         Vector3 rightAnkle_pos = rightAnkle.transform.position;
         rightAnkle_pos.x = rightAnkle_X;  
-        rightAnkle_pos.y = rightAnkle_Y;   
+        rightAnkle_pos.z = rightAnkle_Z;   
         rightAnkle.transform.position = rightAnkle_pos;
 
         Vector3 body_pos = body.transform.position;
         body_pos.x = body_X;  
-        body_pos.y = body_Y;   
+        body_pos.z = body_Z;   
         body.transform.position = body_pos;
     }
 }

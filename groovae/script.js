@@ -1,12 +1,17 @@
+let onsetModel;
 let grooveModel;
-let mvae;
 
 let modelSequence;
 
 init();
 
 function init() {
+  onsetModel = new mm.OnsetsAndFrames('https://storage.googleapis.com/magentadata/js/checkpoints/transcription/onsets_frames_uni');
   grooveModel = new mm.MusicVAE('https://storage.googleapis.com/magentadata/js/checkpoints/music_vae/groovae_2bar_humanize');
+
+  onsetModel.initialize().then(() => {
+    console.log('Onset and Frame initialized')
+  });
 
   grooveModel.initialize().then(() => {
     drumifyControls.removeAttribute('disabled');
@@ -14,9 +19,14 @@ function init() {
   });
 }
 
-async function groove() {
+//TODO: define input
+async function transcribeFromFile(blob) {
+  model.transcribeFromAudioFile(blob).then((ns) => {
+    groove(ns);
+  });
+}
 
-  const sequence = notes;
+async function groove(sequence) {
   const temp = parseFloat(1.0);
 
   const z = await grooveModel.encode([sequence]);

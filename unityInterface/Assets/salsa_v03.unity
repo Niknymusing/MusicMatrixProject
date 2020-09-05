@@ -128,6 +128,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 223317547770000080, guid: 639bb7d82f222144a86b70559cf6e410,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7495213788549864741, guid: 639bb7d82f222144a86b70559cf6e410,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10306,6 +10311,7 @@ MonoBehaviour:
   ListenerPort: 3334
   channel: 0
   OSC_address: /pose
+  discExpanderPrefab: {fileID: 0}
 --- !u!114 &1399254724
 MonoBehaviour:
   m_ObjectHideFlags: 0

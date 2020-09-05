@@ -38,6 +38,12 @@ public class OSCRec_pose : MonoBehaviour {
     
     private float xOffset = 150;
     private float yOffset = 150;
+    private Animator discAnimator;
+    private bool discTrigger;
+
+    public GameObject discExpanderPrefab;
+    private GameObject discExpander;
+    private Vector3 discExpanderPosition = Vector3.zero;
 
     // Use this for initialization
     void Start () {
@@ -48,6 +54,11 @@ public class OSCRec_pose : MonoBehaviour {
         leftAnkle = GameObject.Find("Avatar_leftAnkle");
         rightAnkle = GameObject.Find("Avatar_rightAnkle");
         body = GameObject.Find("Avatar_Body");
+        discTrigger = false;
+        List<GameObject> objectsInScene = FindAllObjectsInScene();
+        discExpanderPrefab = objectsInScene[8];
+        discExpander = (GameObject)Instantiate(discExpanderPrefab, discExpanderPosition, Quaternion.identity);
+        discAnimator = discExpander.transform.GetChild(0).GetComponent<Animator>();
         udp.init(RemoteIP, SendToPort, ListenerPort);
         handler = this.GetComponent<Osc>();
         handler.init(udp);
@@ -62,6 +73,10 @@ public class OSCRec_pose : MonoBehaviour {
 
         leftWrist_X = (float)oscMessage.Values[37]-xOffset;
         leftWrist_Y = (float)oscMessage.Values[38]-yOffset;
+        if ((float)oscMessage.Values[39] > 0.8)
+        {
+            discTrigger = true;
+        }
 
         rightWrist_X = (float)oscMessage.Values[41]-xOffset;
         rightWrist_Y = (float)oscMessage.Values[42]-yOffset;
@@ -124,6 +139,54 @@ public class OSCRec_pose : MonoBehaviour {
             body_pos.x = body_X;  
             body_pos.y = body_Y;   
             body.transform.position = body_pos;
-        }       
+        }   
+
+        if (discTrigger)
+            SetDiscExpandTrigger();   
+    }
+    public static List<GameObject> FindAllObjectsInScene()
+     {
+         UnityEngine.SceneManagement.Scene activeScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene();
+ 
+         GameObject[] rootObjects = activeScene.GetRootGameObjects();
+ 
+         GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+ 
+         List<GameObject> objectsInScene = new List<GameObject>();
+ 
+         for (int i = 0; i < rootObjects.Length; i++)
+         {
+             objectsInScene.Add(rootObjects[i]);
+         }
+ 
+         for (int i = 0; i < allObjects.Length; i++)
+         {
+             if (allObjects[i].transform.root)
+             {
+                 for (int i2 = 0; i2 < rootObjects.Length; i2++)
+                 {
+                     if (allObjects[i].transform.root == rootObjects[i2].transform && allObjects[i] != rootObjects[i2])
+                     {
+                         objectsInScene.Add(allObjects[i]);
+                         break;
+                     }
+                 }
+             }
+         }
+         return objectsInScene;
+     }
+    
+    private void SetDiscExpandTrigger()
+    {
+        Debug.Log("discTrigger");
+        discExpanderPrefab.SetActive(true);
+        discAnimator.Play("discExpand");
+        this.StartCoroutine(this.PerformAnimRoutine());
+    }
+
+    private IEnumerator PerformAnimRoutine()
+    {    
+        yield return new WaitForSeconds(3);     
+        discExpanderPrefab.SetActive(false);
     }
 }

@@ -52,7 +52,7 @@ public class particle_control : MonoBehaviour {
 
 		//color adjustments in hue
 		start_H = (SimpleSpectrum.spectrum[1] * 10000f * hueVariationMag) % 1.0f;
-		Debug.Log(start_H);
+		//Debug.Log(start_H);
 
 		//particle emission and size adjustments
 		float tmp_emission = SimpleSpectrum.spectrum[1] * 10000f * emissionMag;

@@ -1,4 +1,4 @@
-# MusicMatrixHackathon
+# MusicMatrixProject
 Code for the Music Matrix project.
 
 ## Open Sound Control (OSC) Web Bridge

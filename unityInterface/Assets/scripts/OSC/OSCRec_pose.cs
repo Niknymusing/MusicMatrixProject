@@ -48,7 +48,7 @@ public class OSCRec_pose : MonoBehaviour {
     // Use this for initialization
     void Start () {
         udp = this.GetComponent<UDPPacketIO>();
-        nose = GameObject.Find("Avatar_Nose");
+        nose = GameObject.Find("Octa_particleSystem-nose");
         leftWrist = GameObject.Find("Avatar_leftWrist");
         rightWrist = GameObject.Find("Avatar_rightWrist");
         leftAnkle = GameObject.Find("Avatar_leftAnkle");
@@ -68,8 +68,8 @@ public class OSCRec_pose : MonoBehaviour {
 	
 	public void ListenEvent(OscMessage oscMessage)
     {
-        nose_X = (float)oscMessage.Values[1]-xOffset;
-        nose_Y = (float)oscMessage.Values[2]-yOffset;
+        nose_X = ((float)oscMessage.Values[1]-xOffset)/10;
+        //nose_Y = (float)oscMessage.Values[2]-yOffset;
 
         leftWrist_X = (float)oscMessage.Values[37]-xOffset;
         leftWrist_Y = (float)oscMessage.Values[38]-yOffset;

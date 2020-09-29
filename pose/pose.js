@@ -212,7 +212,9 @@ function detectPoseInRealTime(video) {
     });
 
     poses = poses.concat(all_poses);
-    sendPose(poses);
+    if (poses.length>0) {
+      sendPose(poses);}
+    
     input.dispose();
 
     keypointCtx.clearRect(0, 0, videoWidth, videoHeight);
